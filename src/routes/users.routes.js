@@ -5,5 +5,7 @@ const controller = require("../controllers/user.controller");
 
 router.post("/", controller.ajoute);
 router.get("/",controller.findAll)
+router.delete("/:id",controller.delete)
+router.post("/login",controller.login)
 
 module.exports = router;
