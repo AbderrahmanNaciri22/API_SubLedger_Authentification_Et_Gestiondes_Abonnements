@@ -5,6 +5,17 @@ exports.findAll = async (req,res) =>{
     const data = await userModel.find()
     res.status(200).json(data)
 }
+exports.findUser = async (req,res) =>{
+    try{
+     const data = await userModel.findById(req.params.id);
+     if(!data){
+              return res.status(404).json({ message: " id Not found" });
+     }
+     return res.status(200).json(data)
+    }catch(error){
+        return res.status(404).json({message : error.message})
+    }
+}
 
 exports.ajoute = async (req,res) => {
     try{
