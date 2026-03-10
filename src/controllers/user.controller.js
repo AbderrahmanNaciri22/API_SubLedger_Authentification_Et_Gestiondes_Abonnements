@@ -39,6 +39,18 @@ exports.delete = async (req,res)=>{
     }
 }
 
-exports.login = async (req,res) =>{
-
+exports.update = async (req,res) =>{
+    try{
+        const updated = await userModel.findByIdAndUpdate(req.params.id ,req.body,{new:true});
+        if(!updated){
+            res.status(400).json({error:"invalid ID"});
+        }
+        res.status(200).json({message : "is updated "})
+    }catch(error){
+            res.status(400).json({ error: error.message });
+    }
 }
+
+// exports.login = async (req,res) =>{
+
+// }
