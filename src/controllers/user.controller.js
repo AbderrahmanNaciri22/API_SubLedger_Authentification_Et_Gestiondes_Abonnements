@@ -1,5 +1,9 @@
 const userModel = require("../models/userModel")
 
+exports.findAll = async (req,res) =>{
+    const data = await userModel.find()
+    res.status(200).json(data)
+}
 
 exports.ajoute = async (req,res) => {
     try{
