@@ -10,7 +10,7 @@ function verifyUserInputWithJoi(req,res,next){
 })
 
 
-const {error,value} = userSchema.validate(req.body);
+const {error} = userSchema.validate(req.body);
 
 if(error){
     return res.status(400).json({message: error.details[0].message})

@@ -11,7 +11,6 @@ const userRoutes = require("./routes/users.routes");
 const loginRoutes = require("./routes/login.routes");
 const subscriptioninRoutes = require("./routes/subscription.routes");
 
-
 app.use("/login",loginRoutes);
 app.use("/subscription",subscriptioninRoutes);
 app.use("/users", userRoutes);
