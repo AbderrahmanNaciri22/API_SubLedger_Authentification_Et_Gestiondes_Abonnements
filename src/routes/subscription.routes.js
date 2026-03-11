@@ -5,5 +5,8 @@ const authAdminVerify = require("../middlewares/authAdminVerify")
 const controller = require("../controllers/subscription.controller");
 
 router.get("/",controller.getAll)
+router.post("/",controller.createSubscription)
+
+
 
 module.exports = router;
