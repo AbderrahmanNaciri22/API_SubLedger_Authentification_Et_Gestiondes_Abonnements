@@ -4,8 +4,8 @@ const authMiddleware = require("../middlewares/authMiddleware")
 const authAdminVerify = require("../middlewares/authAdminVerify")
 const controller = require("../controllers/subscription.controller");
 
-router.get("/",controller.getAll)
-router.post("/",controller.createSubscription)
+router.get("/",authMiddleware,authAdminVerify,controller.getAll)
+router.post("/",authMiddleware,controller.createSubscription)
 
 
 

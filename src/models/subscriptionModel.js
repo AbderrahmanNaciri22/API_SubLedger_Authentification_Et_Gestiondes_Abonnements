@@ -22,7 +22,7 @@ const subscriptionSchema = new mongoose.Schema({
         trim:true
     },
     userId:{
-        type:Number,
+        type:mongoose.Schema.Types.ObjectId,
         required:true,
         trim:true,
     },
