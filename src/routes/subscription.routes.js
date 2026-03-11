@@ -6,6 +6,8 @@ const controller = require("../controllers/subscription.controller");
 
 router.get("/",authMiddleware,authAdminVerify,controller.getAll)
 router.post("/",authMiddleware,controller.createSubscription)
+router.get("/mysubscription",authMiddleware,controller.findSubscription
+)
 
 
 
