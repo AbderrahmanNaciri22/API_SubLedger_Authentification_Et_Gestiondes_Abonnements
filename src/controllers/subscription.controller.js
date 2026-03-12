@@ -48,11 +48,13 @@ exports.findSubscriptionBytoken = async (req,res) =>{
 exports.findSubscriptionBytokenDetails = async (req,res) =>{
     try{
      const userId = req.userAUth.id
+     const userRole = req.userAUth.role
+
      const subscripton =await subscriptionModel.findById(req.params.id);
         if(!subscripton){
             return res.status(404).json("subscription not found")
         }
-     if(subscripton.userId == userId ){
+     if(subscripton.userId == userId || userRole == "admin" ){
              return res.status(200).json(subscripton);   
      }else{
        return res.status(400).json("no access");   
@@ -66,11 +68,13 @@ exports.findSubscriptionBytokenDetails = async (req,res) =>{
 exports.deleteSubscription = async (req,res) =>{
     try{
         const userId = req.userAUth.id
+             const userRole = req.userAUth.role
+
         const subscripton =await subscriptionModel.findById(req.params.id);
         if(!subscripton){
             return res.status(404).json("subscription not found")
         }
-        if(subscripton.userId == userId ){
+        if(subscripton.userId == userId  || userRole == "admin"){
          const deleteSub = await subscriptionModel.findByIdAndDelete(req.params.id) ;
          return res.status(200).json("Delete succefully"+deleteSub);
         }else{
@@ -93,8 +97,7 @@ exports.updateSubscription = async (req,res) =>{
         }
         if(subscripton.userId == userId ){
          const updateSub = await subscriptionModel.findByIdAndUpdate(req.params.id,req.body,{new : true}) ;
-        return res.status(200).json({name: updateSub.name,price: updateSub.price,billingCycle: updateSub.billingCycle
-});
+        return res.status(200).json({name: updateSub.name,price: updateSub.price,billingCycle: updateSub.billingCycle});
         }else{
         return res.status(400).json("no access");   
 
