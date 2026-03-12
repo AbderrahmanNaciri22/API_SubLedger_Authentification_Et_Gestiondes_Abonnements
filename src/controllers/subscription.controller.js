@@ -1,4 +1,6 @@
-const subscriptionModel = require("../models/subscriptionModel")
+const subscriptionModel = require("../models/subscriptionModel");
+const { param } = require("../routes/users.routes");
+
 
 
 exports.createSubscription = async (req,res) =>{
@@ -32,7 +34,7 @@ exports.getAll = async (req,res) =>{
                 return res.status(500).json({ message: error.message });
         }
 }
-exports.findSubscription = async (req,res) =>{
+exports.findSubscriptionBytoken = async (req,res) =>{
             try{
              const subScription = await subscriptionModel.find({userId:req.userAUth.id}); 
             if (subScription.length === 0) {
@@ -42,4 +44,34 @@ exports.findSubscription = async (req,res) =>{
         }catch(error){
                 return res.status(500).json({ message: error.message });
         }
+}
+exports.findSubscriptionBytokenDetails = async (req,res) =>{
+    try{
+     const userId = req.userAUth.id
+     const subscripton =await subscriptionModel.findById(req.params.id);
+     if(subscripton.userId == userId ){
+             return res.status(200).json(subscripton);   
+     }else{
+       return res.status(400).json("no access");   
+
+     }
+    }catch(error){
+        return res.status(400).json({message:error.message})
+    }
+
+}
+exports.deleteSubscription = async (req,res) =>{
+    try{
+     const userId = req.userAUth.id
+     const subscripton =await subscriptionModel.findById(req.params.id);
+     if(subscripton.userId == userId ){
+             return res.status(200).json(subscripton);   
+     }else{
+       return res.status(400).json("no access");   
+
+     }
+    }catch(error){
+        return res.status(400).json({message:error.message})
+    }
+
 }
