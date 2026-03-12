@@ -49,6 +49,9 @@ exports.findSubscriptionBytokenDetails = async (req,res) =>{
     try{
      const userId = req.userAUth.id
      const subscripton =await subscriptionModel.findById(req.params.id);
+        if(!subscripton){
+            return res.status(404).json("subscription not found")
+        }
      if(subscripton.userId == userId ){
              return res.status(200).json(subscripton);   
      }else{
@@ -81,3 +84,24 @@ exports.deleteSubscription = async (req,res) =>{
 
 }
 
+exports.updateSubscription = async (req,res) =>{
+    try{
+        const userId = req.userAUth.id
+        const subscripton =await subscriptionModel.findById(req.params.id);
+        if(!subscripton){
+            return res.status(404).json("subscription not found")
+        }
+        if(subscripton.userId == userId ){
+         const updateSub = await subscriptionModel.findByIdAndUpdate(req.params.id,req.body,{new : true}) ;
+        return res.status(200).json({name: updateSub.name,price: updateSub.price,billingCycle: updateSub.billingCycle
+});
+        }else{
+        return res.status(400).json("no access");   
+
+        }
+        
+    }catch(error){
+        return res.status(400).json({message:error.message})
+    }
+
+}
