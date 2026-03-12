@@ -8,6 +8,8 @@ router.get("/",authMiddleware,authAdminVerify,controller.getAll)
 router.post("/",authMiddleware,controller.createSubscription)
 router.get("/mysubscription",authMiddleware,controller.findSubscriptionBytoken)
 router.get("/mysubscription/:id",authMiddleware,controller.findSubscriptionBytokenDetails)
+router.delete("/mysubscription/:id",authMiddleware,controller.deleteSubscription)
+router.put("/mysubscription/:id",authMiddleware,controller.updateSubscription)
 
 
 
