@@ -108,3 +108,14 @@ exports.updateSubscription = async (req,res) =>{
     }
 
 }
+
+exports.findUserSubscriptionById = async(req,res)=>{
+    try{
+        const subs = await subscriptionModel.find({userId : req.params.id})
+        return res.status(200).json(subs);
+
+    }catch(error){
+          return res.status(400).json({message:error.message})
+
+    }
+}

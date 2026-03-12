@@ -1,3 +1,11 @@
+![Project Screenshot](images/class.png)
+![Project Screenshot](images/usecase.png)
+
+
+
+
+
+
 Pour install tout depandances principales : 
     npm install express mongoose bcrypt jsonwebtoken dotenv cors morgan
     
@@ -12,3 +20,4 @@ npm install helmet express-rate-limit
 Dépendances développement.
 
 npm install --save-dev nodemon
+
