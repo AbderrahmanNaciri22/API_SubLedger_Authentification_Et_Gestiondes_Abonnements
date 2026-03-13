@@ -65,16 +65,6 @@ Each subscription contains:
 - `createdAt`
 - `userId`
 
-### Endpoints
-
-| Method | Endpoint | Description |
-|------|------|------|
-| POST | `/subscriptions` | Create subscription |
-| GET | `/subscriptions` | List user subscriptions |
-| GET | `/subscriptions/:id` | Get subscription |
-| PUT | `/subscriptions/:id` | Update subscription |
-| DELETE | `/subscriptions/:id` | Delete subscription |
-
 Rules:
 
 - price must be greater than **0**
