@@ -10,9 +10,9 @@ const verifySubscriptionInputWithJoi = require("../validations/verifySubscriptio
 router.get("/",authMiddleware,authAdminVerify,controller.getAll)
 router.post("/",verifySubscriptionInputWithJoi,authMiddleware,controller.createSubscription)
 router.get("/mysubscription",authMiddleware,controller.findSubscriptionBytoken)
-router.get("/mysubscription/:id",authMiddleware,controller.findSubscriptionBytokenDetails)
-router.delete("/mysubscription/:id",authMiddleware,controller.deleteSubscription)
-router.put("/mysubscription/:id",authMiddleware,controller.updateSubscription)
+router.get("/:id",authMiddleware,controller.findSubscriptionBytokenDetails)
+router.delete("/:id",authMiddleware,controller.deleteSubscription)
+router.put("/:id",authMiddleware,controller.updateSubscription)
 
 router.get("/admin/:id",authMiddleware,authAdminVerify,controller.findUserSubscriptionById)
 
